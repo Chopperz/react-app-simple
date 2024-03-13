@@ -1,0 +1,45 @@
+.block-screen {
+  width: 100vw;
+  height: 100vh;
+  /* background: linear-gradient(to top right, #066bdf, #0464a3); */
+  background-image: url("../../assets/BG.jpg");
+}
+
+.content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(48, 48, 48, 0.5);
+}
+
+.block-screen p {
+  color: white;
+  letter-spacing: 5px;
+  text-align: center;
+  font-weight: bold;
+  font-style: italic;
+  font-size: 50px;
+  margin: 0px 0px 10px 0px;
+}
+
+.input-style ::-webkit-input-placeholder {
+  color: gray;
+}
+
+.content .forgot-password {
+  width: 350px;
+  display: flex;
+  flex-direction: row;
+  justify-content: right;
+  margin-top: 2px;
+  margin-bottom: 30px;
+  font-size: 14px;
+  letter-spacing: 0;
+  font-style: italic;
+  font-weight: 200;
+  font-family: monospace;
+  color: rgb(190, 190, 190)
+}

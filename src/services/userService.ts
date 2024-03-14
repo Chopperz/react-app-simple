@@ -1,23 +1,18 @@
-import axios from "axios";
-import store from "../store/store.tsx";
-
-import {
-  fetchUser,
-  resetUser,
-  onChangedStatus,
-} from "../store/user/userSlice.tsx";
+import store from "@store/store";
+import AxiosInstance from "@components/axios/axios.tsx";
+import { fetchUser, onChangedStatus } from "@store/user/userSlice.tsx";
 import { NetworkStatus } from "@components/shared/enums/networkStatus.tsx";
-import environment from "../environments/environment.tsx";
 import { AuthUserInterface } from "@interfaces/auth.interface.tsx";
 
 export const userServices = {
   async getMe() {
-    const url = environment.MOCK_SERVICE_URL + "/auth/me";
     store.dispatch(onChangedStatus(NetworkStatus.loading));
 
-    const res = await axios.get(url, {
+    const token = localStorage.getItem("user-token");
+
+    const res = await AxiosInstance.get("/auth/me", {
       headers: {
-        Authorization: `Bearer ${localStorage.getItem("user-token")}`,
+        Authorization: `Bearer ${token}`,
       },
     });
 

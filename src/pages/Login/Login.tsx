@@ -5,14 +5,14 @@ import { UserOutlined, LockOutlined } from "@ant-design/icons";
 
 import { useSelector, useDispatch } from "react-redux";
 import { RootState, AppDispatch } from "@store/store";
+import { authService } from "@services/authService.ts";
+import { NetworkStatus } from "@components/shared/enums/networkStatus.tsx";
 
 import "./Login.css";
 import {
   onUserNameChanged,
   onPasswordChanged,
-} from "../../store/slices/loginSlice";
-import { authService } from "../../services/authService.ts";
-import { NetworkStatus } from "@components/shared/enums/networkStatus.tsx";
+} from "@store/slices/loginSlice";
 
 const Login = () => {
   const userName = useSelector(

@@ -1,4 +1,4 @@
-import { NetworkStatus } from "../../components/shared/enums/networkStatus";
+import { NetworkStatus } from "@shared/enums/networkStatus";
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 
 const initialState = {

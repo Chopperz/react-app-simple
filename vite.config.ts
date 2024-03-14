@@ -8,9 +8,21 @@ export default defineConfig({
   resolve: {
     alias: [
       {
+        find: "@store",
+        replacement: resolve(__dirname, "./src/store/"),
+      },
+      {
         find: "@components",
         replacement: resolve(__dirname, "./src/components/"),
       },
+      {
+        find: "@shared",
+        replacement: resolve(__dirname, "./src/components/shared/"),
+      },
+      {
+        find: "@services",
+        replacement: resolve(__dirname, "./src/services/"),
+      }
     ],
   },
 });

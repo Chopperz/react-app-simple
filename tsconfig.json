@@ -21,12 +21,16 @@
     "noFallthroughCasesInSwitch": true,
     "paths": {
       "@store/store": ["./src/store/store.tsx"],
-      "@store/slices/*": ["./src/slices/*"],
-      "@services/authService.ts": ["./src/services/authService.ts"],
+      "@store/user/*": ["./src/store/user/*"],
+      "@store/slices/*": ["./src/store/slices/*"],
+      "@services/*": ["./src/services/*"],
       "@interfaces/*": ["./src/interfaces/*"],
-      "@components/*": ["./src/components/*"]
+      "@components/*": ["./src/components/*"],
+      "@app-axios/axios": ["./src/components/axios/axios.tsx"],
+      "@shared/*":["./src/components/shared/*"]
     }
   },
   "include": ["src"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }
+ 

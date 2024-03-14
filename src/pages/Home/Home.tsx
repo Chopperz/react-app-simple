@@ -1,15 +1,17 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useNavigate, Navigate } from "react-router-dom";
 import { Button, Layout, Spin } from "antd";
-import Logo from "../../components/Logo";
-import MenuList from "../../components/MenuList";
+import Logo from "@components/Logo";
+import { userServices } from "@services/userService";
 
+import MenuList from "./src/MenuList";
+import UserInfoView from "./src/UserInfoView";
 import "./Home.css";
-import { userServices } from "../../services/userService";
 
 const { Sider } = Layout;
 
 function Home() {
+  const initialize = useRef(false);
   const [collapsed, setCollapsed] = useState(false);
   const [authenticated, setAuthticated] = useState<boolean | null>(null);
 
@@ -19,6 +21,7 @@ function Home() {
     const user = localStorage.getItem("user-token");
 
     if (user && user !== "") {
+      await userServices.getMe();
       setAuthticated(true);
     } else {
       setAuthticated(false);
@@ -26,14 +29,14 @@ function Home() {
   }
 
   useEffect(() => {
-    handlePreventUserLoggedIn().then(() => {
-      userServices.getMe();
-    });
-  }, [authenticated]);
+    if (!initialize.current) {
+      initialize.current = true;
+      
+      handlePreventUserLoggedIn();
+    }
+  }, []);
 
-  if (!authenticated) {
-    return authenticated == false ? <Navigate replace to="/login" /> : <Spin />;
-  } else {
+  if (authenticated) {
     return (
       <Layout
         style={{
@@ -51,6 +54,7 @@ function Home() {
         >
           <Logo />
           <MenuList />
+          <UserInfoView />
         </Sider>
         <div className="dp-screen">
           <h1
@@ -72,6 +76,8 @@ function Home() {
       </Layout>
     );
   }
+
+  return authenticated == false ? <Navigate replace to="/login" /> : <Spin />;
 }
 
 export default Home;

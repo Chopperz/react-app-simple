@@ -1,15 +1,13 @@
-import axios, { AxiosResponse } from "axios";
-import store from "../store/store.tsx";
+import { AxiosResponse } from "axios";
+import AxiosInstance from "@components/axios/axios.tsx";
+import store from "@store/store";
 
 import {
   onLoginPending,
   onLoginSuccess,
   onLoginError,
-} from "../store/slices/loginSlice";
-import { resetUser } from "../store/user/userSlice.tsx";
-import environment from "../environments/environment.tsx";
-
-const delay = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
+} from "@store/slices/loginSlice.tsx";
+import { resetUser } from "@store/user/userSlice.tsx";
 
 interface AuthServiceType {
   username: string;
@@ -21,7 +19,6 @@ export const authService = {
   async login({ username, password, onHomeNavigator }: AuthServiceType) {
     store.dispatch(onLoginPending());
 
-    const url = environment.MOCK_SERVICE_URL + "/auth/login";
     const userBody = JSON.stringify({
       username: username,
       password: password,
@@ -33,8 +30,8 @@ export const authService = {
       },
     };
 
-    const res: AxiosResponse<any, any> = await axios.post(
-      url,
+    const res: AxiosResponse<any, any> = await AxiosInstance.post(
+      "/auth/login",
       userBody,
       customConfig
     );

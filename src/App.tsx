@@ -5,6 +5,9 @@ import Register from "./pages/Register/Register";
 import "./App.css";
 import "antd/dist/reset.css";
 
+export const delay = (ms: number) =>
+  new Promise((resolve) => setTimeout(resolve, ms));
+
 function App() {
   return (
     <>

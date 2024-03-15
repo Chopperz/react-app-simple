@@ -24,10 +24,13 @@
       "@store/user/*": ["./src/store/user/*"],
       "@store/slices/*": ["./src/store/slices/*"],
       "@services/*": ["./src/services/*"],
+      "@services/http": ["./src/services/httpService.tsx"],
       "@interfaces/*": ["./src/interfaces/*"],
       "@components/*": ["./src/components/*"],
-      "@app-axios/axios": ["./src/components/axios/axios.tsx"],
-      "@shared/*":["./src/components/shared/*"]
+      "@shared/*":["./src/components/shared/*"],
+      "@utils/*": ["./src/utils/*"],
+      "@constants/*": ["./src/constants/*"],
+      "@enums/*": ["./src/constants/enums/*"],
     }
   },
   "include": ["src"],

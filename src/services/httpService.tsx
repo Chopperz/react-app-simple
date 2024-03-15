@@ -1,13 +1,12 @@
 import axios from "axios";
-import environment from "../../environments/environment.tsx";
+import environment from "../environments/environment.tsx";
+import globalRouter from "@constants/navigate.tsx";
 
-import { useNavigate } from "react-router-dom";
-
-const AxiosInstance = axios.create({
+const httpClient = axios.create({
   baseURL: environment.MOCK_SERVICE_URL,
 });
 
-AxiosInstance.interceptors.request.use(
+httpClient.interceptors.request.use(
   (config) => {
     console.log(`Axios interceptors request (Config): ${config}`);
     return config;
@@ -18,7 +17,7 @@ AxiosInstance.interceptors.request.use(
   }
 );
 
-AxiosInstance.interceptors.response.use(
+httpClient.interceptors.response.use(
   (response) => {
     console.log(`Axios interceptors response (Response): ${response}`);
     return response;
@@ -27,10 +26,9 @@ AxiosInstance.interceptors.response.use(
     console.log(`Axios interceptors response (Error): ${error}`);
 
     if (error.response && error.response.status === 401) {
-      if (localStorage.getItem("user-token")) {
+      if (localStorage.getItem("user-token") && globalRouter.navigate) {
         localStorage.removeItem("user-token");
-        const navigate = useNavigate();
-        navigate("/login");
+        globalRouter.navigate("/login");
       }
     }
 
@@ -38,4 +36,4 @@ AxiosInstance.interceptors.response.use(
   }
 );
 
-export default AxiosInstance;
+export default httpClient;

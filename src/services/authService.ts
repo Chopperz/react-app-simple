@@ -1,5 +1,5 @@
 import { AxiosResponse } from "axios";
-import AxiosInstance from "@components/axios/axios.tsx";
+import httpClient from "@services/httpService";
 import store from "@store/store";
 
 import {
@@ -30,7 +30,7 @@ export const authService = {
       },
     };
 
-    const res: AxiosResponse<any, any> = await AxiosInstance.post(
+    const res: AxiosResponse<any, any> = await httpClient.post(
       "/auth/login",
       userBody,
       customConfig

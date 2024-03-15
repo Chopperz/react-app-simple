@@ -1,7 +1,7 @@
 import store from "@store/store";
-import AxiosInstance from "@components/axios/axios.tsx";
+import httpClient from "@services/httpService";
 import { fetchUser, onChangedStatus } from "@store/user/userSlice.tsx";
-import { NetworkStatus } from "@components/shared/enums/networkStatus.tsx";
+import { NetworkStatus } from "../constants/enums/networkStatus";
 import { AuthUserInterface } from "@interfaces/auth.interface.tsx";
 
 export const userServices = {
@@ -10,7 +10,7 @@ export const userServices = {
 
     const token = localStorage.getItem("user-token");
 
-    const res = await AxiosInstance.get("/auth/me", {
+    const res = await httpClient.get("/auth/me", {
       headers: {
         Authorization: `Bearer ${token}`,
       },

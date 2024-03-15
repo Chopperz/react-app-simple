@@ -6,7 +6,7 @@ import { UserOutlined, LockOutlined } from "@ant-design/icons";
 import { useSelector, useDispatch } from "react-redux";
 import { RootState, AppDispatch } from "@store/store";
 import { authService } from "@services/authService.ts";
-import { NetworkStatus } from "@components/shared/enums/networkStatus.tsx";
+import { NetworkStatus } from "../../constants/enums/networkStatus";
 
 import "./Login.css";
 import {

@@ -22,6 +22,18 @@ export default defineConfig({
       {
         find: "@services",
         replacement: resolve(__dirname, "./src/services/"),
+      },
+      {
+        find: "@constants",
+        replacement: resolve(__dirname, "./src/constants/"),
+      },
+      {
+        find: "@enums",
+        replacement: resolve(__dirname, "./src/constants/enums/"),
+      },
+      {
+        find: "@utils",
+        replacement: resolve(__dirname, "./src/utils/"),
       }
     ],
   },

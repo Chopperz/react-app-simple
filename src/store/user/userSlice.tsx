@@ -1,6 +1,6 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 import { AuthUserInterface } from "@interfaces/auth.interface.tsx";
-import { NetworkStatus } from "../../components/shared/enums/networkStatus.tsx";
+import { NetworkStatus } from "../../constants/enums/networkStatus.tsx";
 
 const initialState = {
   user: {

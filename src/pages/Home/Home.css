@@ -43,4 +43,13 @@
   height: 8vh;
   align-items: center;
   justify-content: center;
+  gap: 10px;
+}
+
+.user-info-view .user-info-description {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  justify-content: center;
+  padding-top: 8px;
 }

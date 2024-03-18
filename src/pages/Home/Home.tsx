@@ -4,8 +4,8 @@ import { Button, Layout, Spin } from "antd";
 import Logo from "@components/Logo";
 import { userServices } from "@services/userService";
 
-import MenuList from "./src/MenuList";
-import UserInfoView from "./src/UserInfoView";
+import MenuList from "./components/MenuList";
+import UserInfoView from "./components/UserInfoView";
 import "./Home.css";
 
 const { Sider } = Layout;
@@ -31,7 +31,7 @@ function Home() {
   useEffect(() => {
     if (!initialize.current) {
       initialize.current = true;
-      
+
       handlePreventUserLoggedIn();
     }
   }, []);
@@ -54,7 +54,7 @@ function Home() {
         >
           <Logo />
           <MenuList />
-          <UserInfoView />
+          <UserInfoView isCollapsed={collapsed} />
         </Sider>
         <div className="dp-screen">
           <h1

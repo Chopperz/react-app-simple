@@ -18,10 +18,8 @@ export const userServices = {
 
     if (res.status == 200) {
       const userData: AuthUserInterface = res.data;
-      store.dispatch(
-        onChangedStatus(NetworkStatus.success),
-        fetchUser(userData)
-      );
+      store.dispatch(onChangedStatus(NetworkStatus.success));
+      store.dispatch(fetchUser(userData));
     } else {
       store.dispatch(onChangedStatus(NetworkStatus.error));
     }

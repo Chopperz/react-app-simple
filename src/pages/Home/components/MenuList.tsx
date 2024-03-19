@@ -4,6 +4,8 @@ import {
   FileTextOutlined,
   TeamOutlined,
 } from "@ant-design/icons";
+import { useLocation, useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
 
 type MenuItem = Required<MenuProps>["items"][number];
 
@@ -30,13 +32,41 @@ const items: MenuItem[] = [
 ];
 
 const MenuList = () => {
+  const navigate = useNavigate();
+  const location = useLocation();
+  const [menuKey, setSelectedKey] = useState("application");
+
+  useEffect(() => {
+    switch (location.pathname) {
+      case "/":
+        setSelectedKey("application");
+        break;
+      case "/log":
+        setSelectedKey("log");
+        break;
+      case "/user-management":
+        setSelectedKey("user-management");
+        break;
+      default:
+        break;
+    }
+  }, [location.pathname]);
+
   return (
     <Menu
       theme="dark"
       className="menu-list"
       mode="vertical"
+      selectedKeys={[menuKey]}
       defaultSelectedKeys={["application"]}
       items={items}
+      onSelect={(e) => {
+        if (e.key === "application") {
+          navigate("/");
+        } else {
+          navigate(`/${e.key}`);
+        }
+      }}
     />
   );
 };
